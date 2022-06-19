@@ -7,5 +7,5 @@ target 'GitHubSearch' do
 
   # Pods for GitHubSearch
   pod 'Texture'
-
+pod "MarkdownView"
 end

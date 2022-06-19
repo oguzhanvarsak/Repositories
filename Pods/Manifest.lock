@@ -1,4 +1,5 @@
 PODS:
+  - MarkdownView (1.9.1)
   - PINCache (3.0.3):
     - PINCache/Arc-exception-safe (= 3.0.3)
     - PINCache/Core (= 3.0.3)
@@ -36,21 +37,24 @@ PODS:
     - Texture/Core
 
 DEPENDENCIES:
+  - MarkdownView
   - Texture
 
 SPEC REPOS:
   trunk:
+    - MarkdownView
     - PINCache
     - PINOperation
     - PINRemoteImage
     - Texture
 
 SPEC CHECKSUMS:
+  MarkdownView: 22249778219cc22901f1454e8355298dd0bda7f0
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   Texture: 2e8ab2519452515f7f5a520f5a8f7e0a413abfa3
 
-PODFILE CHECKSUM: db9acda12db14fb007d98d7a2ff819c4315fd9f8
+PODFILE CHECKSUM: 2d9b9bfda385089eb208508eb245aa98efefa31d
 
 COCOAPODS: 1.11.2

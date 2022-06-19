@@ -9,14 +9,16 @@ import UIKit
 import Foundation
 
 protocol WebServiceProtocol {
-    func parseJSON(data: Data) -> Result<Response?, NetworkError>
-    func getRepositories(url: String, completion: @escaping (Result<Repositories?, NetworkError>) -> Void)
+    func parseJSON<B: Decodable>(data: Data, model: B.Type) -> Result<Decodable?, NetworkError>
+    func getData<T: Decodable, B: Decodable>(url: String, baseModel: B.Type, model: T.Type,
+                                           completion: @escaping (Result<Decodable?, NetworkError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
     let utilityQueue = DispatchQueue.global(qos: .utility)
 
-    func getRepositories(url: String, completion: @escaping (Result<Repositories?, NetworkError>) -> Void) {
+    func getData<T: Decodable, B: Decodable>(url: String, baseModel: B.Type, model: T.Type,
+                               completion: @escaping (Result<Decodable?, NetworkError>) -> Void) {
         if let url = URL(string: url) {
             
             let loginString = "\(Secrets.username):\(Secrets.apiKey)"
@@ -36,8 +38,8 @@ class WebService: WebServiceProtocol {
                     completion(.failure(.noInternetConnection))
                 } else {
                     if let data = data {
-                        if let repositoryList = try? self.parseJSON(data: data).get() {
-                            completion(.success(repositoryList.items))
+                        if let response = try? self.parseJSON(data: data, model: B.self).get() {
+                            completion(.success(response))
                         }
                     }
                 }
@@ -48,12 +50,12 @@ class WebService: WebServiceProtocol {
         }
     }
     
-    func parseJSON(data: Data) -> Result<Response?, NetworkError> {
+    func parseJSON<B: Decodable>(data: Data, model: B.Type) -> Result<Decodable?, NetworkError> {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         do {
-            let decodedData = try decoder.decode(Response.self, from: data)
+            let decodedData = try decoder.decode(B.self, from: data)
             
             return .success(decodedData)
         } catch {

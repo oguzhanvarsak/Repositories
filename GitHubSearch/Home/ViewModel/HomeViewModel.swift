@@ -27,18 +27,22 @@ class HomeViewModel {
     
     func fetchData(for keyword: String, isRefresh: Bool = false) {
         searchKeyword = keyword
-        service.getRepositories(url: String(format: Url.search, searchKeyword, pageNumber), completion: { result in
+        service.getData(url: String(format: Url.search, searchKeyword, pageNumber),
+                        baseModel: Response.self, model: Repositories.self,
+                        completion: { result in
             switch result {
-            case .success(let repositories):
+            case .success(let items as Response):
                 if !isRefresh {
-                    self.repositories = repositories!
+                    self.repositories = items.items
                 } else {
-                    self.repositories += repositories!
+                    self.repositories += items.items
                 }
                     
                 self.delegate?.reloadTable()
             case .failure(let error):
                     break
+            default:
+                break
             }
         })
     }

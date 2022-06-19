@@ -32,7 +32,7 @@ class HomeViewController: ASDKViewController<BaseNode> {
 
 extension HomeViewController: HomePresentationDelegate {
     func navigate(with data: Repository) {
-        let controller = DetailViewController()
+        let controller = DetailViewController(repository: data)
         self.present(controller, animated: true)
     }
 }

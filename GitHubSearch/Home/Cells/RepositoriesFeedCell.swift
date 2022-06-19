@@ -9,7 +9,6 @@ import AsyncDisplayKit
 
 class RepositoriesFeedCell: BaseCellNode {
     let headerNode = HeaderNode()
-    let imageNode = ImageNode()
     let descriptionNode = DescriptionNode()
     
     var repository: Repository?
@@ -35,7 +34,6 @@ class RepositoriesFeedCell: BaseCellNode {
     
     private func populate(repository: Repository) {
         headerNode.populate(repository: repository)
-        imageNode.populate(repository: repository)
         descriptionNode.populate(repository: repository)
     }
 }

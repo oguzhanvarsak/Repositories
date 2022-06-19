@@ -54,15 +54,15 @@ class HeaderNode: BaseNode {
         profileImage.cornerRadius = 35/2
         profileImage.style.preferredSize = CGSize(width: 35, height: 35)
         
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold, scale: .large)
-        starImage.image = UIImage(systemName: "star", withConfiguration: largeConfig)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 8, weight: .bold, scale: .large)
+        starImage.image = UIImage(systemName: "eye", withConfiguration: largeConfig)
         languageImage.image = UIImage(systemName: "globe", withConfiguration: largeConfig)
     }
     
     func populate(repository: Repository) {
         profileImage.url = URL(string: repository.owner?.avatarUrl ?? "")
         
-        repositoryName.attributedText = NSAttributedString(string: repository.name ?? "", attributes: [NSAttributedString.Key.foregroundColor: UIColor.label])
+        repositoryName.attributedText = NSAttributedString(string: repository.name ?? "")
         repositoryStars.attributedText = NSAttributedString(string: "\(repository.watchers ?? 0)")
         repositoryLanguage.attributedText = NSAttributedString(string: repository.language ?? "")
     }

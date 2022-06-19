@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in HomeViewModel.fetchData(for:isRefresh:):HomeViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "repositories?[0].updatedOn">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ImageNode.setup():ImageNode.swift">
          <PersistentStrings>
             <PersistentString
@@ -17,6 +25,17 @@
          contextName = "HomeViewModel.pageNumber.getter:HomeViewModel.swift">
       </ContextState>
       <ContextState
+         contextName = "Item.updatedOn.getter:Item.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "updatedAt">
+            </PersistentString>
+            <PersistentString
+               value = "DateFormatter.dateFormatter.date(from: updatedAt!)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "HomePresentation.scrollViewDidScroll(_:):HomePresentation.swift">
          <PersistentStrings>
             <PersistentString
@@ -28,9 +47,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in HomeTableView.tableNode(_:nodeBlockForRowAt:):HomeTableView.swift">
-      </ContextState>
-      <ContextState
          contextName = "HomeViewModel.increasePage():HomeViewModel.swift">
          <PersistentStrings>
             <PersistentString
@@ -38,6 +54,36 @@
             </PersistentString>
             <PersistentString
                value = "repositories.count / 30">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in variable initialization expression of static NSDateFormatter.dateFormatter:Extensions.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DetailViewModel.fetchData():DetailViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.encodedReadMe">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WebService.parseJSON&lt;&#x3c4;_0_0&gt;(data:model:):WebService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeTableView.tableNode(_:nodeBlockForRowAt:):HomeTableView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DetailPresentation.tableNode(_:nodeForRowAt:):DetailPresentation.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel.readMe">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

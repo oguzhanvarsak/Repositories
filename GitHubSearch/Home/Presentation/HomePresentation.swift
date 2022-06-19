@@ -31,16 +31,14 @@ class HomePresentation: BaseNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: table)
+        return ASInsetLayoutSpec(insets: .zero, child: table)
     }
 }
 
 // MARK: - TableView Delegate & Data Source
 extension HomePresentation: ASTableDelegate, ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        let width = UIScreen.main.bounds.width
-        
-        return ASSizeRangeMake(CGSize(width: width, height: 0), CGSize(width: width, height: CGFloat.greatestFiniteMagnitude))
+        return ASSizeRangeMake(CGSize(width: UIScreen.width, height: 0), CGSize(width: UIScreen.width, height: CGFloat.greatestFiniteMagnitude))
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +69,7 @@ extension HomePresentation: ASTableDelegate, ASTableDataSource {
     
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
         delegate?.navigate(with: viewModel.repositoryAtIndex(indexPath.row))
+        tableNode.deselectRow(at: indexPath, animated: true)
     }
 }
 

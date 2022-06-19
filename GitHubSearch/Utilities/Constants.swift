@@ -9,6 +9,7 @@ import Foundation
 
 struct Url {
     static let search = "https://api.github.com/search/repositories?q=%@in:name&sort=stars&order=desc&page=%d"
+    static let readme = "https://api.github.com/repos/%@/%@/readme"
 }
 
 struct Secrets {

@@ -8,12 +8,12 @@
 import AsyncDisplayKit
 
 class DetailViewController: ASDKViewController<BaseNode> {
-    private var presentation: HomePresentation!
+    private var presentation: DetailPresentation!
     
-    override init() {
+    init(repository: Repository) {
         super.init(node: BaseNode())
         
-        presentation = HomePresentation()
+        presentation = DetailPresentation(repository: repository)
         
         self.node.addSubnode(presentation)
         
