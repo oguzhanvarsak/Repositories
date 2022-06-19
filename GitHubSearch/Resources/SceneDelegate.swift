@@ -21,9 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
         
-        let viewController = TabBarController()
-        
-        window?.rootViewController = viewController
+        let viewController = HomeViewController()
+        let navigationController = ASDKNavigationController(rootViewController: viewController)
+        navigationController.navigationBar.topItem?.title = "Repositories"
+        navigationController.navigationBar.prefersLargeTitles = true
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 
