@@ -16,6 +16,7 @@ class DescriptionNode: BaseNode {
     }
     
     func populate(repository: Repository) {
-        repositoryDescription.attributedText = NSAttributedString(string: repository.description ?? "" , attributes: [NSAttributedString.Key.foregroundColor: UIColor.label])
+        repositoryDescription.attributedText = NSAttributedString(string: repository.description ?? "" ,
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.label])
     }
 }

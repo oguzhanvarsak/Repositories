@@ -9,9 +9,10 @@ import Foundation
 
 protocol HomeViewModelDelegate: NSObject {
     func reloadTable()
+    func presentAlert(describing error: String)
 }
 
-class HomeViewModel {
+final class HomeViewModel {
     private var repositories = Repositories()
     private var service: WebServiceProtocol
     private var searchKeyword = ""
@@ -40,7 +41,7 @@ class HomeViewModel {
                     
                 self.delegate?.reloadTable()
             case .failure(let error):
-                    break
+                self.delegate?.presentAlert(describing: error.errorDescription!)
             default:
                 break
             }

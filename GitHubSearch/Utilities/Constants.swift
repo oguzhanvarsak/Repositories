@@ -12,7 +12,10 @@ struct Url {
     static let readme = "https://api.github.com/repos/%@/%@/readme"
 }
 
-struct Secrets {
-    static let username = "oguzhanvarsak"
-    static let apiKey = "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"
+struct GithubConstants {
+    static let CLIENT_ID = "108abb34f4bf46f1a059"
+    static let CLIENT_SECRET = "07ab844f38b550f1c2210f8723090cc7654d9044"
+    static let REDIRECT_URI = "https://github.com/oguzhanvarsak"
+    static let SCOPE = "read:user,user:email,repo"
+    static let TOKENURL = "https://github.com/login/oauth/access_token"
 }

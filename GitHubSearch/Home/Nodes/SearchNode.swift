@@ -5,7 +5,6 @@
 //  Created by Oğuzhan Varsak on 18.06.2022.
 //
 
-import Foundation
 import AsyncDisplayKit
 
 protocol SearchNodeDelegate {
@@ -13,12 +12,15 @@ protocol SearchNodeDelegate {
     func clearList()
 }
 
-class SearchNode: ASDisplayNode {
+class SearchNode: BaseNode {
     var delegate: SearchNodeDelegate?
     
     override init() {
         super.init()
-        
+        setup()
+    }
+    
+    private func setup() {
         self.setViewBlock({
             let searchView: UISearchBar = .init(frame: .zero)
             searchView.placeholder = "Search Repository"

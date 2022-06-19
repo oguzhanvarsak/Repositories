@@ -11,7 +11,6 @@ enum NetworkError: Error {
     case badUrl
     case errorParsingJSON(String)
     case noInternetConnection
-    case dataReturnedNil
     case returnedError(Error)
     case invalidStatusCode(Int)
     case customError(String)
@@ -26,8 +25,6 @@ extension NetworkError: LocalizedError {
                 return NSLocalizedString("The URL is in wrong format", comment: "Bad Url")
             case .errorParsingJSON(let error):
                 return NSLocalizedString(error, comment: "Parse Error")
-            case .dataReturnedNil:
-                return NSLocalizedString("The Image could not load.", comment: "Empty Image Data")
             case .returnedError(let error):
                 return NSLocalizedString(error.localizedDescription, comment: "Unknown Error")
             case .invalidStatusCode(let statusCode):

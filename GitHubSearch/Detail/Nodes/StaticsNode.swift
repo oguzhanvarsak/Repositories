@@ -13,6 +13,8 @@ class StaticsNode: ASScrollNode {
     var forks = ASTextNode()
     var topic = ASTextNode()
     var licence = ASTextNode()
+    var createdAt = ASTextNode()
+    var updatedAt = ASTextNode()
     
     override init() {
         super.init()
@@ -21,12 +23,13 @@ class StaticsNode: ASScrollNode {
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let labelStack = ASStackLayoutSpec(direction: .horizontal,
-                                       spacing: 10,
-                                       justifyContent: .end,
-                                       alignItems: .center,
-                                       children: [watchers, issues, forks, topic, licence])
+                                           spacing: 10,
+                                           justifyContent: .end,
+                                           alignItems: .center,
+                                           children: [watchers, issues, forks, topic, licence])
         
-        let finalSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16), child: labelStack)
+        let finalSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16),
+                                          child: labelStack)
         
         return finalSpec
     }
@@ -38,6 +41,8 @@ class StaticsNode: ASScrollNode {
     }
     
     func populate(repository: Repository) {
+        createdAt.attributedText = NSAttributedString(string: "Created at: \(DateFormatter.string(from: repository.updatedAt ?? ""))")
+        updatedAt.attributedText = NSAttributedString(string: "Last update: \(DateFormatter.string(from: repository.createdAt ?? ""))")
         watchers.attributedText = NSAttributedString(string: "Watchers: \(repository.watchers ?? 0)")
         issues.attributedText = NSAttributedString(string: "Issues: \(repository.openIssues ?? 0)")
         forks.attributedText = NSAttributedString(string: "Forks: \(repository.forks ?? 0)")
@@ -45,6 +50,7 @@ class StaticsNode: ASScrollNode {
         
         if let topics = repository.topics, !topics.isEmpty {
             let string = NSMutableAttributedString(string: "Topics:")
+            
             for topic in topics {
                 string.append(NSAttributedString(string: " [\(topic)]"))
             }

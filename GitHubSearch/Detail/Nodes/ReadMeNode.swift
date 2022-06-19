@@ -8,7 +8,7 @@
 import AsyncDisplayKit
 import MarkdownView
 
-class ReadMeNode: ASDisplayNode {
+class ReadMeNode: BaseNode {
     init(readMe: String) {
         super.init()
         

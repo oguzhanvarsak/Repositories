@@ -25,13 +25,15 @@ class DetailPresentation: BaseNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0), child: table)
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0),
+                                 child: table)
     }
 }
 
 extension DetailPresentation: ASTableDelegate, ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        return ASSizeRangeMake(CGSize(width: UIScreen.width, height: 0), CGSize(width: UIScreen.width, height: CGFloat.greatestFiniteMagnitude))
+        return ASSizeRangeMake(CGSize(width: UIScreen.width, height: 0),
+                               CGSize(width: UIScreen.width, height: CGFloat.greatestFiniteMagnitude))
     }
     
     func numberOfSections(in tableNode: ASTableNode) -> Int {

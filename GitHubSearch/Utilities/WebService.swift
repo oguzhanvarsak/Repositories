@@ -11,21 +11,25 @@ import Foundation
 protocol WebServiceProtocol {
     func parseJSON<B: Decodable>(data: Data, model: B.Type) -> Result<Decodable?, NetworkError>
     func getData<T: Decodable, B: Decodable>(url: String, baseModel: B.Type, model: T.Type,
-                                           completion: @escaping (Result<Decodable?, NetworkError>) -> Void)
+                                             completion: @escaping (Result<Decodable?, NetworkError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
     let utilityQueue = DispatchQueue.global(qos: .utility)
 
     func getData<T: Decodable, B: Decodable>(url: String, baseModel: B.Type, model: T.Type,
-                               completion: @escaping (Result<Decodable?, NetworkError>) -> Void) {
+                                             completion: @escaping (Result<Decodable?, NetworkError>) -> Void) {
         if let url = URL(string: url) {
+            let defaults = UserDefaults.standard
+            let username = defaults.string(forKey: "username")
+            let token = defaults.string(forKey: "accessToken")
             
-            let loginString = "\(Secrets.username):\(Secrets.apiKey)"
+            let loginString = "\(username ?? ""):\(token ?? "")"
             
             guard let loginData = loginString.data(using: String.Encoding.utf8) else {
                 return
             }
+            
             let base64LoginString = loginData.base64EncodedString()
             
             var request = URLRequest(url: url)

@@ -20,7 +20,8 @@ class DetailViewController: ASDKViewController<BaseNode> {
         self.node.backgroundColor = .white
         
         self.node.layoutSpecBlock = { (node, constrainedSize) in
-            return ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: self.presentation)
+            return ASInsetLayoutSpec(insets: UIEdgeInsets.zero,
+                                     child: self.presentation)
         }
     }
     
