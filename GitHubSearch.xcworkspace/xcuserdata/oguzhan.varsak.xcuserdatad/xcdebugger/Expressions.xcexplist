@@ -3,9 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in HomeTableView.tableNode(_:nodeBlockForRowAt:):HomeTableView.swift">
-      </ContextState>
-      <ContextState
          contextName = "ImageNode.setup():ImageNode.swift">
          <PersistentStrings>
             <PersistentString
@@ -13,6 +10,34 @@
             </PersistentString>
             <PersistentString
                value = "repositoryImage.url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewModel.pageNumber.getter:HomeViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomePresentation.scrollViewDidScroll(_:):HomePresentation.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isLoadingMore">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel.numberOfRowInSection(1)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in HomeTableView.tableNode(_:nodeBlockForRowAt:):HomeTableView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewModel.increasePage():HomeViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "repositories.count">
+            </PersistentString>
+            <PersistentString
+               value = "repositories.count / 30">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

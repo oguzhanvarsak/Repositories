@@ -11,6 +11,7 @@ class BaseCellNode: ASCellNode {
     override init() {
         super.init()
         
-        self.automaticallyManagesSubnodes = true
+        automaticallyManagesSubnodes = true
+        neverShowPlaceholders = true
     }
 }

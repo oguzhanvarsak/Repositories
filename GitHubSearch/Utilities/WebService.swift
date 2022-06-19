@@ -11,7 +11,6 @@ import Foundation
 protocol WebServiceProtocol {
     func parseJSON(data: Data) -> Result<Response?, NetworkError>
     func getRepositories(url: String, completion: @escaping (Result<Repositories?, NetworkError>) -> Void)
-    func loadData(from url: String, completion: @escaping (Result<Data?, NetworkError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
@@ -19,7 +18,19 @@ class WebService: WebServiceProtocol {
 
     func getRepositories(url: String, completion: @escaping (Result<Repositories?, NetworkError>) -> Void) {
         if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            let loginString = "\(Secrets.username):\(Secrets.apiKey)"
+            
+            guard let loginData = loginString.data(using: String.Encoding.utf8) else {
+                return
+            }
+            let base64LoginString = loginData.base64EncodedString()
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     print(error.localizedDescription)
                     completion(.failure(.noInternetConnection))
@@ -48,20 +59,6 @@ class WebService: WebServiceProtocol {
         } catch {
             print(error)
             return .failure(.errorParsingJSON(error.localizedDescription))
-        }
-    }
-    
-    func loadData(from url: String, completion: @escaping (Result<Data?, NetworkError>) -> Void) {
-        utilityQueue.async {
-            if let url = URL(string: url) {
-                if let data = try? Data(contentsOf: url) {
-                    completion(.success(data))
-                } else {
-                    completion(.failure(.dataReturnedNil))
-                }
-            } else {
-                completion(.failure(.badUrl))
-            }
         }
     }
 }

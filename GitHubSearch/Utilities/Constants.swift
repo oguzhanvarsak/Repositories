@@ -12,5 +12,6 @@ struct Url {
 }
 
 struct Secrets {
-    static let apiKey = "SKbMJBa25bk284XywRHyKAYWNF4AQGID"
+    static let username = "oguzhanvarsak"
+    static let apiKey = "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"
 }
