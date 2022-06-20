@@ -34,7 +34,6 @@ The application is ready to be used after downloading.
 - Minimum iOS version - 13
 
 ## Design
-The app must follow [Apple Human Interface Guidelines](The app must follow Apple Human Interface Guidelines, as well as contain at least the following:), as well as contain at least the following:
 
 ### _Search Result List_
 
